@@ -7,7 +7,75 @@
     <meta name="description" content="Play Mope.io online - An exciting multiplayer IO game where you evolve from a tiny mouse to a fierce dragon. Survive, hunt, and become the apex predator!">
     <link rel="canonical" href="https://mopeio.online" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'neon-blue': '#00f2fe',
+                        'neon-purple': '#8a2be2',
+                        'neon-pink': '#ff00ff',
+                    },
+                    boxShadow: {
+                        'neon': '0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6',
+                        'neon-purple': '0 0 5px #fff, 0 0 10px #fff, 0 0 15px #8a2be2, 0 0 20px #8a2be2',
+                        'neon-pink': '0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff00ff, 0 0 20px #ff00ff',
+                    }
+                }
+            }
+        }
+    </script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap');
+        
+        body {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            background-attachment: fixed;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .neon-text {
+            color: #fff;
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6;
+        }
+        
+        .neon-text-purple {
+            color: #fff;
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #8a2be2, 0 0 20px #8a2be2, 0 0 25px #8a2be2;
+        }
+        
+        .neon-text-pink {
+            color: #fff;
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff00ff, 0 0 20px #ff00ff, 0 0 25px #ff00ff;
+        }
+        
+        .neon-border {
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6;
+        }
+        
+        .game-title {
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .continue-btn {
+            background: linear-gradient(90deg, #8a2be2, #ff00ff);
+            transition: all 0.3s ease;
+        }
+        
+        .continue-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+        }
+        
         @media (max-width: 768px) {
             .game-container {
                 height: 70vh !important;
@@ -15,63 +83,91 @@
         }
     </style>
 </head>
-<body class="bg-gray-50">
-    <header class="bg-gradient-to-r from-gray-100 to-gray-200 py-6">
-        <div class="container mx-auto px-4">
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-2">Play Mope.io Online</h1>
-            <p class="text-xl text-gray-600">Evolve, hunt, and become the strongest animal in this thrilling multiplayer adventure!</p>
+<body>
+    <header class="py-8">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="game-title text-5xl md:text-6xl font-bold neon-text-purple mb-3 animate__animated animate__fadeIn">Play Mope.io Online</h1>
+            <p class="text-xl text-white mb-6 animate__animated animate__fadeIn animate__delay-1s">Evolve, hunt, and become the strongest animal in this thrilling multiplayer adventure!</p>
+            <div class="w-24 h-1 bg-gradient-to-r from-neon-purple to-neon-pink mx-auto rounded-full"></div>
         </div>
     </header>
 
-    <main class="container mx-auto px-4 py-8">
+    <main class="container mx-auto px-4 py-6">
         <!-- Game Container -->
-        <div class="game-container w-full h-[80vh] rounded-lg overflow-hidden shadow-xl mb-8">
+        <div class="game-container w-full h-[80vh] rounded-xl overflow-hidden shadow-2xl mb-10 glass-effect animate__animated animate__fadeIn animate__delay-1s">
             <iframe src='https://www.gamenora.com/embed/mope-io' style='width:100%;height:100%;' frameborder='0' allowfullscreen></iframe>
         </div>
 
+        <!-- Continue Game Button (Visible when game is paused/ad showing) -->
+        <div class="text-center mb-10 hidden">
+            <button class="continue-btn text-white font-bold py-4 px-10 rounded-full text-xl inline-flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                CONTINUE GAME
+            </button>
+        </div>
+
         <!-- Game Information -->
-        <section class="grid md:grid-cols-2 gap-8">
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h2 class="text-2xl font-bold text-gray-800 mb-4">About Mope.io</h2>
-                <p class="text-gray-600 leading-relaxed">
+        <section class="grid md:grid-cols-2 gap-8 mb-10">
+            <div class="glass-effect p-8 rounded-xl animate__animated animate__fadeInLeft animate__delay-2s">
+                <h2 class="text-2xl font-bold neon-text mb-4 game-title">About Mope.io</h2>
+                <p class="text-white leading-relaxed opacity-90">
                     Mope.io is an exciting multiplayer survival game where you start as a small animal and work your way up the food chain. Hunt other players, gather food, and evolve into stronger creatures as you progress through the game.
                 </p>
             </div>
 
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h2 class="text-2xl font-bold text-gray-800 mb-4">How to Play</h2>
-                <ul class="text-gray-600 space-y-2">
-                    <li>• Use mouse or touch controls to move your animal</li>
-                    <li>• Eat food and smaller animals to gain XP</li>
-                    <li>• Avoid larger animals that can eat you</li>
-                    <li>• Level up to evolve into stronger creatures</li>
-                    <li>• Use special abilities to survive and hunt</li>
+            <div class="glass-effect p-8 rounded-xl animate__animated animate__fadeInRight animate__delay-2s">
+                <h2 class="text-2xl font-bold neon-text-pink mb-4 game-title">How to Play</h2>
+                <ul class="text-white opacity-90 space-y-3">
+                    <li class="flex items-start">
+                        <span class="text-neon-pink mr-2">•</span> 
+                        <span>Use mouse or touch controls to move your animal</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-neon-pink mr-2">•</span> 
+                        <span>Eat food and smaller animals to gain XP</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-neon-pink mr-2">•</span> 
+                        <span>Avoid larger animals that can eat you</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-neon-pink mr-2">•</span> 
+                        <span>Level up to evolve into stronger creatures</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-neon-pink mr-2">•</span> 
+                        <span>Use special abilities to survive and hunt</span>
+                    </li>
                 </ul>
             </div>
         </section>
 
-        <section class="mt-8 bg-white p-6 rounded-lg shadow-md">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4">Game Features</h2>
-            <div class="grid md:grid-cols-3 gap-4">
-                <div class="p-4 bg-gray-50 rounded-lg">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Multiple Animals</h3>
-                    <p class="text-gray-600">Progress through various animals, each with unique abilities and characteristics.</p>
+        <section class="mb-10 animate__animated animate__fadeIn animate__delay-3s">
+            <h2 class="text-2xl font-bold neon-text-purple mb-6 text-center game-title">Game Features</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="glass-effect p-6 rounded-xl transition-all duration-300 hover:shadow-neon-purple">
+                    <h3 class="text-xl font-semibold text-white mb-3 game-title">Multiple Animals</h3>
+                    <p class="text-white opacity-80">Progress through various animals, each with unique abilities and characteristics.</p>
                 </div>
-                <div class="p-4 bg-gray-50 rounded-lg">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Real-time Multiplayer</h3>
-                    <p class="text-gray-600">Compete with players from around the world in real-time battles.</p>
+                <div class="glass-effect p-6 rounded-xl transition-all duration-300 hover:shadow-neon">
+                    <h3 class="text-xl font-semibold text-white mb-3 game-title">Real-time Multiplayer</h3>
+                    <p class="text-white opacity-80">Compete with players from around the world in real-time battles.</p>
                 </div>
-                <div class="p-4 bg-gray-50 rounded-lg">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Strategic Gameplay</h3>
-                    <p class="text-gray-600">Use strategy and skill to survive and become the apex predator.</p>
+                <div class="glass-effect p-6 rounded-xl transition-all duration-300 hover:shadow-neon-pink">
+                    <h3 class="text-xl font-semibold text-white mb-3 game-title">Strategic Gameplay</h3>
+                    <p class="text-white opacity-80">Use strategy and skill to survive and become the apex predator.</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="bg-gray-800 text-white py-6 mt-8">
+    <footer class="py-8 mt-8">
         <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2024 mopeio.online - The best place to play Mope.io online</p>
+            <div class="w-24 h-1 bg-gradient-to-r from-neon-purple to-neon-pink mx-auto rounded-full mb-6"></div>
+            <p class="text-white opacity-80">&copy; 2024 mopeio.online - The best place to play Mope.io online</p>
         </div>
     </footer>
 </body>
